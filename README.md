@@ -7,3 +7,4 @@
 - [ ] cover image
 - [ ] 카테고리/태그 정리
 - [ ] vercel deploy & new domain setup
+- [ ] SEO 세팅
