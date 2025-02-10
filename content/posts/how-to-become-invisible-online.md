@@ -1,11 +1,11 @@
 ---
-title: "How to become invisible online"
+title: "온라인에서 익명성을 유지하는 방법과 개인정보 보호 팁 🔒"
 date: 2022-09-16
 draft: false
-categories: ["Security"]
+categories: ["Cybersecurity"]
+tags: ["firefox", "brave", "duckduckgo", "vpn", "signal", "session", "tor"]
 cover:
   image: img/how-to-become-invisible-online/4.png
-  caption: ""
 ShowToc: true
 TocOpen: true
 ---

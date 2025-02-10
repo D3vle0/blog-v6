@@ -1,8 +1,13 @@
 ---
-title: "XAMPP error in m1 mac"
+title: "M1 맥에서 XAMPP 설치 에러 해결하기"
 date: 2022-05-30
 draft: false
-tags: ["macOS"]
+categories: ["macOS"]
+tags: ["xampp"]
+cover:
+  image: img/xampp-error/2.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## XAMPP

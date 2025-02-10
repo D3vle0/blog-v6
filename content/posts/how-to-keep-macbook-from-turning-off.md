@@ -1,8 +1,13 @@
 ---
-title: "How to keep macbook from turning off"
+title: "맥북 화면 꺼지지 않게 설정하기 🔋"
 date: 2022-06-17T20:31:01+09:00
 draft: false
-tags: ["macOS"]
+categories: ["macOS"]
+tags: ["amphetamine"]
+cover:
+  image: img/how-to-keep-macbook-from-turning-off/1.png
+ShowToc: true
+TocOpen: true
 ---
 
 맥북을 사용하다가 잠시 자리를 비우고 싶을 때 `cmd + control + q` 를 눌러 화면을 잠그는 경우가 있다. 그러나 이때 잠금 화면은 몇 초 동안만 켜져 있다가 화면이 꺼지는데, 화면이 꺼지지 않고 잠금 화면이 계속 켜져있도록 하고 싶을 수 있다. 또한 음악을 감상할 때는 화면을 덮어도 잠자기 모드로 들어가지 않게 하고 싶은 상황이 있을 수 있다. 이 두 상황을 해결할 수 있는 방법을 소개하겠다.

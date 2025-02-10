@@ -1,21 +1,26 @@
 ---
-title: "FastVPN by namecheap"
+title: "Namecheap의 FastVPN 사용기 🛜"
 date: 2022-09-13
 draft: false
-tags: ["Security"]
+categories: ["Cybersecurity"]
+tags: ["namecheap", "vpn", "IKEv2", "macOS"]
+cover:
+  image: img/fastvpn/5.png
+ShowToc: true
+TocOpen: true
 ---
 
-# FastVPN이란?
+## FastVPN이란?
 
 FastVPN이란 도메인 구매 사이트인 Namecheap에서 운영하는 VPN 서비스다. NordVPN, ExpressVPN 등 세계적인 서비스 대신에 FastVPN을 리뷰하는 이유는 하나다. 매우 저렴한 가격.
 
-# 획기적인 가격 정책
+## 획기적인 가격 정책
 
 ![Untitled](/img/fastvpn/0.png)
 
 가격정책은 매달 5.88 달러 (첫달 0.99달러) 매년 34.56달러 (첫해 12달러)로 타 서비스에 비해 저렴한 편이다. 먼저 0.99달러로 한 달만 체험해보고 괜찮으면 연간 플랜을 사용해야겠다.
 
-# 연결 불가
+## 연결 불가
 
 ![Untitled](/img/fastvpn/1.png)
 
@@ -37,7 +42,7 @@ Best Available 로케이션으로 연결하고 몇 초 지나지 않아서 연�
 
 IKEv2 VPN 추가 버튼을 눌러도 아무것도 없는 빈 창이 나온다.
 
-# Monterey로 rollback 후 재시도
+## Monterey로 rollback 후 재시도
 
 macOS 12.6으로 롤백을 진행하고 VPN을 연결했는데도 작동을 하지 않았다. 아래의 링크를 자세히 읽어보니, 연결이 되지 않을 경우 다른 네트워크 환경에서 연결을 시도해보라고 했다. 그 결과 학교 와이파이 대신 개인 네트워크를 사용하니 한 번에 해결되었다.
 

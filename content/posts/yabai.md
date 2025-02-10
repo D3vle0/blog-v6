@@ -1,8 +1,13 @@
 ---
-title: "How to customize macOS in an advanced way"
+title: "맥에서 Tiling Window Manager 사용하기 (Yabai) / 고급스럽게 macOS 커스텀하기 🤩"
 date: 2022-06-01
 draft: false
-tags: ["macOS"]
+categories: ["macOS"]
+tags: ["yabai", "wm", "de", "Übersicht"]
+cover:
+  image: img/yabai/14.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 서문
@@ -73,7 +78,7 @@ nano ~/.yabairc
 
 `~/.yabairc` 에는 다음과 같은 내용을 입력하자. `~/.yabairc`는 Yabai configuration 파일인데, github에서 제공하는 example 파일을 그대로 입력해보겠다.
 
-```bash
+```bash {linenos=true}
 #!/usr/bin/env sh
 
 # the scripting-addition must be loaded manually if

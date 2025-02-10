@@ -1,8 +1,11 @@
 ---
-title: "My Domain History and Brief Explanation of Handshake Domains"
+title: "Handshake 도메인, 블록체인 도메인이란? (+내 도메인 역사)"
 date: 2022-01-30T13:17:52+09:00
 draft: false
-tags: ['Blockchain']
+categories: ["Blockchain"]
+tags: ["hns", "handshake", "domain"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## 서론
@@ -28,11 +31,11 @@ tags: ['Blockchain']
 
 namecheap을 둘러보다가 이런 버튼을 발견했다.
 
-![https://cdn.discordapp.com/attachments/794556029555703832/910811982863687730/Screen_Shot_2021-11-18_at_4.png](https://cdn.discordapp.com/attachments/794556029555703832/910811982863687730/Screen_Shot_2021-11-18_at_4.png)
+![스크린샷 유실됨](#)
 
 오른쪽 위에 HNS 라고 적힌 버튼이 보이는데, 저 버튼을 누르면?
 
-![https://cdn.discordapp.com/attachments/794556029555703832/910814986878713866/Screen_Shot_2021-11-18_at_4.png](https://cdn.discordapp.com/attachments/794556029555703832/910814986878713866/Screen_Shot_2021-11-18_at_4.png)
+![스크린샷 유실됨](#)
 
 생전 처음 보는 TLD 들이 보인다! `.pgp`, `.sass` 는 심상치 않아보이는데...  
 [이곳에서](https://www.namecheap.com/support/knowledgebase/article.aspx/10484/2278/namecheap-handshake-tlds/#accessing_hns_domains) 확인해보니 Handshake Domains 라고 한다. 간단하게 번역을 해보자면...  
@@ -50,7 +53,7 @@ namecheap을 둘러보다가 이런 버튼을 발견했다.
 
 또한 [이곳에 따르면](https://hns.to/) 자기 자신만의 TLD를 가질 수 있다고 한다.
 
-![https://cdn.discordapp.com/attachments/794556029555703832/910821454042525766/Screen_Shot_2021-11-18_at_6.10.33_PM.png](https://cdn.discordapp.com/attachments/794556029555703832/910821454042525766/Screen_Shot_2021-11-18_at_6.10.33_PM.png)
+![스크린샷 유실됨](#)
 
 ### HDNS 접근 방법
 

@@ -1,9 +1,15 @@
 ---
-title: "Arch Linux Home Server Setup"
+title: "Arch Linux 홈서버 셋업"
 date: 2022-01-22T22:54:03+09:00
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["arch"]
+cover:
+  image: https://firebasestorage.googleapis.com/v0/b/storage-f1f46.appspot.com/o/homeserver-02.png?alt=media&token=9c5d2559-eace-44a7-96a7-e3fcaeb3e47b
+ShowToc: true
+TocOpen: true
 ---
+
 
 ## 서버 히스토리
 

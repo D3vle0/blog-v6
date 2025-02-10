@@ -1,8 +1,13 @@
 ---
-title: "Install GUI in Ubuntu Server and Connect with RDP"
+title: "Ubuntu Server에 GUI 설치 후 RDP로 접속하기"
 date: 2022-02-11T09:38:38+09:00
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["gui", "rdp", "ubuntu"]
+cover:
+  image: img/ubuntu-server-gui-rdp/2.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 사용 환경
@@ -74,7 +79,7 @@ sudo apt-get install xrdp
 
 `/etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla` 에 아래와 같은 내용을 입력한다.
 
-```pkla
+```txt {linenos=true}
 [Allow Colord all Users]
 Identity=unix-user:*
 Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile

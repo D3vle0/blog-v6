@@ -1,8 +1,13 @@
 ---
-title: "How To Make Mockup Image"
-date: 2022-06-22T14:36:01+09:00
+title: "디자인 목업 이미지 제작하기 ✨"
+date: 2022-06-22
 draft: false
-tags: ['UI/UX']
+categories: ["UI/UX"]
+tags: ["design", "mockup", "psd"]
+cover:
+  image: img/how-to-make-mockup/13.png
+ShowToc: true
+TocOpen: true
 ---
 
 첫 디자인 관련 글이다.

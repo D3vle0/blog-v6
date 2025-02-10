@@ -1,8 +1,13 @@
 ---
-title: "My New Earbuds: JBL Live Pro 2"
+title: "JBL Live Pro 2 블루투스 이어폰 리뷰 🎧"
 date: 2022-06-09T20:16:40+09:00
 draft: false
-tags: ["Music"]
+categories: ["Music"]
+tags: ["JBL", "earbuds"]
+cover:
+  image: img/jbl-live-pro-2/1.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 구성품
@@ -56,12 +61,12 @@ JBL 앱을 통하여 따로 세팅을 해줘야 하는 사항인지는 모르겠
 
 JBL Live Pro 2로 듣기 좋은 음악을 추천하겠다. 특유의 묵직하고 입체적인 저음을 듣기 좋은 음악들이다.
 
-- [Imagine Dragons - Bones](https://www.youtube.com/watch?v=TO-_3tck2tg)
-- [dhruv - double take](https://www.youtube.com/watch?v=R8FHtIhWqNo)
-- [BTS - Dynamite](https://www.youtube.com/watch?v=gdZLi9oWNZg)
-- [HONNE - Day 1 ◑](https://www.youtube.com/watch?v=hWOB5QYcmh0)
-- [Shawn Mendes - If I Can't Have You](https://www.youtube.com/watch?v=d6_9CF1ucoI)
-- [Post Malone - I Like You](https://youtu.be/xZYHehC7TVc)
+- Imagine Dragons - Bones
+- dhruv - double take
+- BTS - Dynamite
+- HONNE - Day 1 ◑
+- Shawn Mendes - If I Can't Have You
+- Post Malone - I Like You
 
 극저음역대를 올리면 팝 중에서는 Glass Animals - Heat Waves 를 듣는 재미가 있을 듯 하다.
 

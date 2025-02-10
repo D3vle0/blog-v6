@@ -1,8 +1,11 @@
 ---
-title: "Install osu! in m1 mac"
-date: 2022-05-19T08:51:20+09:00
+title: "M1 맥에 osu! 설치하기 🎮"
+date: 2022-05-19
 draft: false
-tags: ['macOS'] 
+categories: ["macOS"]
+tags: ["osu!", "wine"]
+ShowToc: true
+TocOpen: true
 ---
 
 [이곳에서](https://osu.ppy.sh/community/forums/topics/1106057?n=1) wineskin과 osu! 게임 파일을 다운받는다.

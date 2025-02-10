@@ -2,7 +2,10 @@
 title: "SuNiNaTaS 26 Solution"
 date: 2022-01-25T21:55:09+09:00
 draft: false
-tags: ["Security"]
+categories: ["Security"]
+tags: ["suninatas"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## 문제 풀이 요약

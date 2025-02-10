@@ -1,17 +1,23 @@
 ---
-title: "How to mine dogecoin in m1 mac"
+title: "M1 맥북에서 도지코인 채굴하기 🐕"
 date: 2022-10-05
 draft: false
-tags: ["Blockchain"]
+categories: ["Blockchain"]
+tags: ["dogecoin", "binance", "xmrig"]
+cover:
+  image: img/dogecoin/3.png
+  caption: ""
+ShowToc: true
+TocOpen: true
 ---
 
-# 거래소 가입
+## 거래소 가입
 
 국내 거래소(빗썸, 업비트, 코인원 등)는 미성년자의 가입을 제한하고 있다. 코인 투자는 미숙한 경제 관념을 갖고 있는 미성년자에게 권장되지 않기 때문이다. 해외 거래소도 마찬가지지만 국내 거래소 보다는 상대적으로 덜 엄격한 듯 하다.
 
 일단 본인은 binance 2단계 KYC 인증을 통과하여 정상적으로 바이낸스 해외 거래소를 이용할 수 있다. 만 18세 이상 (생일 지난 19살)은 대부분의 해외 거래소에서 가입 허가를 해준다.
 
-# 지갑 주소 확인
+## 지갑 주소 확인
 
 ![Untitled](/img/dogecoin/1.png)
 
@@ -21,13 +27,13 @@ Wallet > Fiat and Spot 에 들어가서 도지코인 검색 후 Deposit 버튼�
 
 이후 원하는 네트워크 선택 후 지갑 주소를 복사한다.
 
-# 채굴 프로그램 설치
+## 채굴 프로그램 설치
 
 [XMRig](https://xmrig.com/)
 
 이곳에서 자신의 PC 운영체제에 맞는 XMrig 프로그램을 설치한다. 압축을 해제하면 `config.json` 파일이 들어있는데, pools 부분을 다음과 같이 수정한다.
 
-```json
+```json {linenos=true}
 "pools": [
         {
             "algo": "rx/0",
@@ -53,7 +59,7 @@ Wallet > Fiat and Spot 에 들어가서 도지코인 검색 후 Deposit 버튼�
 
 ![Untitled](/img/dogecoin/3.png)
 
-# 결과는?
+## 결과
 
 평균적으로 1300H/s 의 해시레이트를 가진다. 
 

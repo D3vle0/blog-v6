@@ -1,8 +1,13 @@
 ---
-title: "Bundling CLI app into Mac native app with Platypus + Custom URI Scheme"
+title: "CLI 프로그램을 맥 네이티브 프로그램으로 번들링하기 (+Custom URI Scheme) 📚"
 date: 2022-05-26
 draft: false
-tags: ["macOS"]
+categories: ["macOS"]
+tags: ["platypus", "protocol", "scheme"]
+cover:
+  image: img/platypus/2.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 서문

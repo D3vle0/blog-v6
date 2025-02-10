@@ -1,8 +1,13 @@
 ---
-title: "A Complete Guide to Building Your Own Home Server"
+title: "Ubuntu 홈서버 구축 가이드 💻"
 date: 2022-05-15T08:48:42+09:00
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["ubuntu"]
+cover:
+  image: img/homeserver-guide/1.jpeg
+ShowToc: true
+TocOpen: true
 ---
 
 ![a](/img/homeserver-guide/1.jpeg)
@@ -266,7 +271,7 @@ sudo nano /etc/vsftpd.conf
 
 `/etc/vsftpd.conf` 내용을 아래의 내용으로 바꾼다.
 
-```conf
+```txt {linenos=true}
 listen=YES
 listen_ipv6=NO
 anonymous_enable=NO
@@ -298,7 +303,7 @@ sudo systemctl restart vsftpd
 
 ## irc 서버 설정
 
-[이 글을 참고하면 된다.](https://devleo.wtf/posts/irc/)
+[이 글을 참고하면 된다.](/posts/irc/)
 
 ## 후기
 

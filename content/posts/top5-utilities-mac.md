@@ -1,8 +1,13 @@
 ---
-title: "Top 5 macOS productivity apps"
+title: "생산성을 향상시켜줄 맥북 필수 앱 TOP 5 추천"
 date: 2022-05-11T22:33:44+09:00
 draft: false
-tagas: ["macOS"]
+categories: ["macOS"]
+tags: ["wine", "wineskin", "RDM"]
+cover:
+  image: img/top5-utilities-mac/5.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 서문

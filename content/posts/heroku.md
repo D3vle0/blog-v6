@@ -1,8 +1,13 @@
 ---
-title: "Setup Serverless Infrastructure Using Heroku"
+title: "Heroku를 활용한 서버리스 인프라 구축 ⚙️"
 date: 2022-05-29
 draft: false
-tags: ['Server']
+categories: ["Server"]
+tags: ["heroku", "serverless"]
+cover:
+  image: img/heroku/3.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## Serverless란?
@@ -44,7 +49,7 @@ npm install express
 nano index.js
 ```
 
-```js
+```js {linenos=true}
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;

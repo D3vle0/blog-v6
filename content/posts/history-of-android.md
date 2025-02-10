@@ -1,8 +1,10 @@
 ---
-title: "History of Android (School Project)"
+title: "안드로이드의 역사 (학교 프로젝트 용)"
 date: 2022-03-25T22:03:21+09:00
 draft: false
-category: 'Android'
+categories: ["Android"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## 안드로이드 1.0

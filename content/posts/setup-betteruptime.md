@@ -1,8 +1,13 @@
 ---
-title: "How to Setup BetterUptime for Linux Server"
+title: "BetterUptime으로 리눅스 서버 모니터링하기 👨‍🔧"
 date: 2022-05-25
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["betteruptime", "ping"]
+cover:
+  image: img/setup-betteruptime/8.png
+ShowToc: true
+TocOpen: true
 ---
 
 [BetterUptime이라는 서비스가 있다.](https://betteruptime.com) betteruptime이란 서버의 상태를 쉽게 모니터링할 수 있는 서비스인데, 웹사이트, SSL, ping, cron 등을 모니터링할 수 있다. 여기서 모니터링은 서버가 켜진지 꺼진지, uptime 시간과 비율은 얼마나 되는지에 대한 정보들을 확인하는 것을 말한다. BetterUptime 장점은 만약 서버에 문제가 생겼을 시 이메일, 전화, 문자, slack 등으로 즉시 알림을 보낼 수 있다.
@@ -59,7 +64,7 @@ nano landing.js
 
 `landing.js` 파일은 아래와 같이 입력한다.
 
-```js
+```js {linenos=true}
 const fs = require("fs");
 const http = require("http");
 const https = require("https");

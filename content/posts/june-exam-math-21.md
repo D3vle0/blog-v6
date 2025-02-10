@@ -1,9 +1,14 @@
 ---
-title: "23학년도 대수능 6월 모의평가 수학 21번"
+title: "23학년도 대수능 6월 모의평가 수학 21번 Python ✏️"
 date: 2022-06-10T10:02:20+09:00
 draft: false
-tags: ["Math"]
+categories: ["Math"]
+tags: ["python", "math"]
 math: true
+cover:
+  image: img/june-exam-math-21/1.png
+ShowToc: true
+TocOpen: true
 ---
 
 2022.06.09. 시행된 2023학년도 대학수학능력시험 6월 모의평가 수학 21번 문제를 프로그래밍으로 해결하는 글이다.
@@ -38,7 +43,7 @@ $\log_{2}\left(\frac{3}{4n+16}\right)$ 이 -12가 되면 $n$의 값은 1000을 �
 
 ## 코드
 
-```py
+```py {linenos=true}
 import math
 res = 0
 for n in range(1, 1001):

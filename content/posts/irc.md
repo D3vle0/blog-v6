@@ -1,9 +1,14 @@
 ---
-title: "Ubuntu IRC Server Setup With Docker"
+title: "Ubuntu에서 Docker를 이용한 IRC 서버 구축"
 date: 2022-01-25T12:46:47+09:00
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["ubuntu", "irc", "irssi"]
+ShowToc: true
+TocOpen: true
 ---
+
+
 ## IRC란?
 
 Internet Relay Chatting의 약자로, 특정 topic을 가지고 사용자끼리 대화를 할 수 있습니다.
@@ -50,7 +55,7 @@ mkdir config
 
 `docker-compose.yml` 을 아래와 같이 작성합니다.
 
-```yml
+```yml {linenos=true}
 version: "3.5"
 services:
     irc:
@@ -126,7 +131,7 @@ cd config
 
 이후 `docker.motd` 파일을 수정해서 사용하면 됩니다.
 
-```motd
+```txt {linenos=true}
                         _        _
  ___  ___  ___ _ __ ___| |_     (_)_ __ ___
 / __|/ _ \/ __| '__/ _ \ __|____| | '__/ __|

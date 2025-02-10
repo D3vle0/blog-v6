@@ -2,7 +2,12 @@
 title: "SuNiNaTaS 14 Solution"
 date: 2022-01-25T20:17:29+09:00
 draft: false
-tags: ["Security"]
+categories: ["Security"]
+tags: ["suninatas"]
+cover:
+  image: img/suninatas-14/1.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 문제 풀이 요약
@@ -16,7 +21,7 @@ tags: ["Security"]
 
 압축을 풀면 `passwd`, `shadow` 파일이 나온다. 이 파일은 실제 리눅스 시스템에서 각각 `/etc/passwd`, `/etc/shadow` 에 해당하고, `passwd` 에는 사용자 계정 정보가, `shadow` 에는 해당 사용자의 비밀번호를 암호화한 값이 저장되어 있다.  
 
-```
+```txt {linenos=true}
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 bin:x:2:2:bin:/bin:/bin/sh
@@ -55,7 +60,7 @@ suninatas:x:1001:1001::/home/suninatas:/bin/sh
 
 `passwd`파일에는 맨 아래에 `suninatas`유저를 확인할 수 있다.
 
-```
+```txt {linenos=true}
 root:$6$E2loH6yC$0lcZ0hG/b.YqlsPhawt5NtX2jJkSFBK6eaF/wa46d8/3KPs6d45jNHgNoJOl7X1RsOrYsZ.J/BBexJ93ECVfW.:15426:0:99999:7:::
 daemon:x:15426:0:99999:7:::
 bin:x:15426:0:99999:7:::

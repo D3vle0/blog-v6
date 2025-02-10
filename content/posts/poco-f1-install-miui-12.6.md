@@ -2,7 +2,12 @@
 title: "Poco F1 Install Miui 12.6"
 date: 2022-02-17T21:52:08+09:00
 draft: false
-tags: ["Android"]
+categories: ["Android"]
+tags: ["rom"]
+cover:
+  image: img/poco-f1-install-miui-12.6/2.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 서론

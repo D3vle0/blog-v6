@@ -1,8 +1,13 @@
 ---
-title: "Custom Domain for Tor Website"
+title: "Tor 서버에서 나만의 .onion 도메인 생성하기 (커스텀 도메인) 🧅"
 date: 2022-05-26
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["tor", "domain", "mkp224o"]
+cover:
+  image: img/tor-custom-domain/1.jpg
+ShowToc: true
+TocOpen: true
 ---
 
 ![img](/img/tor-custom-domain/1.jpg)

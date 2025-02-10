@@ -2,7 +2,10 @@
 title: "CTFd Remove Default Banner"
 date: 2021-10-31T14:30:23+09:00
 draft: false
-tags: ['Security']
+categories: ["Security"]
+tags: ["ctfd"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## 문제 발생
@@ -27,7 +30,7 @@ grep -r 'to login and setup your CTF' .
 
 "to login and setup your CTF" 라는 문자열이 포함된 파일을 검색한다.
 
-![img](https://cdn.discordapp.com/attachments/794556029555703832/904175566352179200/Screen_Shot_2021-10-31_at_10.10.47_AM.png)
+![스크린샷 유실됨](#)
 
 `./CTFd/views.py` 의 index 변수를 수정해도 없어지지 않았다.  
 바로 아래에 `./CTFd/ctfd.db` 파일에도 해당 문자열이 있다는데 sqlite3를 이용해 열어보자.
@@ -43,7 +46,7 @@ sqlite3 ctfd.db
 SELECT * FROM pages;
 ```
 
-```sql
+```sql {linenos=true}
 1||index|<div class="row">
     <div class="col-md-6 offset-md-3">
         <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="/themes/core/static/img/logo.png?d=1d53abea" />
@@ -64,7 +67,7 @@ SELECT * FROM pages;
 
 이렇게 생긴 table이 나온다.
 
-```sql
+```sql {linenos=true}
 CREATE TABLE pages (
         id INTEGER NOT NULL, 
         title VARCHAR(80), 
@@ -90,7 +93,7 @@ UPDATE pages SET content="aaaaa" WHERE id=1;
 
 다시 CTFd 서버를 켜면...
 
-![img](https://cdn.discordapp.com/attachments/794556029555703832/904178484132347904/Screen_Shot_2021-10-31_at_10.22.25_AM.png)
+![스크린샷 유실됨](#)
 
 기본 banner 가 사라졌다!
 

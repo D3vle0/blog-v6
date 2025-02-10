@@ -2,7 +2,12 @@
 title: "SuNiNaTaS 28 Solution"
 date: 2022-01-25T21:57:59+09:00
 draft: false
-tags: ["Security"]
+categories: ["Security"]
+tags: ["suninatas"]
+cover:
+  image: img/suninatas-28/3.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 문제 풀이 요약

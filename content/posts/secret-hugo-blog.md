@@ -1,8 +1,11 @@
 ---
-title: "How to make secret hugo blog with tor"
+title: "딥 웹에 비밀 블로그 만드는 방법 (Hugo) 🔒"
 date: 2022-05-23
 draft: false
-tags: ["Blog"]
+categories: ["Blog"]
+tags: ["tor", "hugo"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## 사전 준비
@@ -111,3 +114,37 @@ sudo cat /var/lib/tor/hidden_service/hostname
 kill -9 `ps -ef | grep hugo | awk '{print $2}'`
 nohup hugo server --bind=127.0.0.1 --baseURL=http://<onion 주소> --port=<포트> &
 ```
+
+> 25.02.09 내용 추가  
+> 만약 `hugo server` 가 아닌 `hugo` 명령으로 빌드한 정적 웹사이트를 80 포트에 서빙하고 싶다면 다음과 같이 설정하면 된다.
+> ```txt
+> # /etc/nginx/sites-enabled/default
+>
+> server {
+>     listen 127.0.0.1:80;
+>     server_name <onion 주소>;
+> 
+>     # 정적 파일 경로 설정
+>     root <hugo 블로그 경로>/public;
+>     index index.html;
+> 
+>     location / {
+>         try_files $uri $uri/ =404;
+>     }
+> 
+>     # 캐싱 비활성화 (Tor 특성상 권장)
+>     add_header Cache-Control "no-store, no-cache, must-revalidate";
+>     etag off;
+> 
+>     # 접근 로그 비활성화 (보안 강화)
+>     access_log off;
+>     error_log /var/log/nginx/tor-error.log;
+> }
+> ```
+>
+> ```txt
+> # /etc/tor/torrc
+> 
+> HiddenServiceDir /var/lib/tor/hidden_service/
+> HiddenServicePort 80 127.0.0.1:80
+> ```

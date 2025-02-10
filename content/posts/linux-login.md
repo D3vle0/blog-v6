@@ -1,8 +1,13 @@
 ---
-title: "How to improve SSH security in Ubuntu 22.04"
+title: "fail2ban으로 SSH 보안 향상하기 / 접속 차단"
 date: 2022-05-19
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["fail2ban", "ssh"]
+cover:
+  image: img/linux-login/4.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 로그인 시도 기록 확인

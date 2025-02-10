@@ -1,8 +1,13 @@
 ---
-title: "Perfect way to set up Ubuntu 22.04"
+title: "Ubuntu 22.04 서버 세팅하기 🛠️"
 date: 2022-09-05T09:01:39+09:00
 draft: false
-tags: ["Server"]
+categories: ["Server"]
+tags: ["ubuntu", "homeserver", "server"]
+# cover:
+#   image: img/fastvpn/5.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 서문
@@ -114,7 +119,7 @@ nano run/conf/inspircd.conf
 
 다음과 같이 입력한다.
 
-```conf
+```txt {linenos=true}
 <config format="xml">
 <define name="bindip" value="1.2.2.3">
 <define name="localips" value="&bindip;/24">

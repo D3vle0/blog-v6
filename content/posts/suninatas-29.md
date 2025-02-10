@@ -1,8 +1,13 @@
 ---
-title: "SuNiNaTaS 29 Solution"
+title: "SuNiNaTaS 32 Solution"
 date: 2022-01-25T22:16:04+09:00
 draft: false
-tags: ["Security"]
+categories: ["Security"]
+tags: ["suninatas"]
+cover:
+  image: img/suninatas-29/4.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## 문제 풀이 요약

@@ -1,8 +1,13 @@
 ---
-title: "Mint My Own NFT with Ethereum and Klaytn"
+title: "이더리움과 클레이튼을 활용해 나만의 NFT 민팅하기"
 date: 2022-05-09T10:08:24+09:00
 draft: false
-tags: ["Blockchain"]
+categories: ["Blockchain"]
+tags: ["ethereum", "kaikas", "klaytn", "metamask", "krafterspace", "opensea"]
+cover:
+  image: img/how-to-mint-nft/6.png
+ShowToc: true
+TocOpen: true
 ---
 
 ## NFT란?

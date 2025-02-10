@@ -1,9 +1,15 @@
 ---
-title: "How to Install Parallels Desktop in m1 mac"
+title: "M1 맥에서 Parallels Desktop 17 무료로 사용하기"
 date: 2022-06-03
 draft: false
-tags: ["macOS"]
+categories: ["macOS"]
+tags: ["windows", "parallels"]
+cover:
+  image: img/parallels/2.png
+ShowToc: true
+TocOpen: true
 ---
+
 
 ## Parallels Desktop
 

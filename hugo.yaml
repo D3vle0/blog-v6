@@ -2,6 +2,7 @@ baseURL: "https://examplesite.com/"
 title: Devleo's Blog
 # paginate: 10
 theme: PaperMod
+math: true
 
 enableInlineShortcodes: true
 ignoreLogs: 'warning-goldmark-raw-html'
@@ -39,7 +40,7 @@ params:
   disableThemeToggle: false
 
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
@@ -91,6 +92,8 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/D3vle0"
+    - name: "rss"
+      url: "/index.xml"
 
   analytics:
     google:
@@ -106,7 +109,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content"
+    URL: "https://github.com/d3vle0/blog-v6/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
