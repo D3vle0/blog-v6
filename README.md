@@ -7,5 +7,5 @@
 - [x] cover image
 - [x] 카테고리/태그 정리
 - [x] vercel deploy & new domain setup
-- [ ] SEO 세팅
+- [x] SEO 세팅
 - [ ] 블로그 소개란에 개인 프로젝트 링크 첨부
