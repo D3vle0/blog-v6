@@ -4,6 +4,9 @@ date: 2025-06-16T19:53:00+09:00
 draft: false
 categories: ["Server"]
 tags: ["server", "debian", "linux", "android", "busybox"]
+cover:
+  image: img/install-debian-on-phone/6.png
+  caption: ""
 ShowToc: true
 TocOpen: true
 ---
