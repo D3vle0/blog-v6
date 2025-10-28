@@ -90,9 +90,7 @@ params:
     Content: >
       👋 정보보안, AI, 블록체인, 프로그래밍을 공부하는 학생입니다.  
 
-      &nbsp;
-
-      현재 U.S. 8th Army에서 군복무 중입니다.
+      현재 U.S. 8th Army에서 KATUSA로 군복무 중입니다.  
 
       &nbsp;
 
@@ -102,7 +100,11 @@ params:
 
       &nbsp;
 
-      ![Alt text](https://spotify-recently-played-readme.vercel.app/api?user=85o05xl09h5de8ngv9im0txhx&count=3)
+      ![Spotify Recently Played](https://spotify-recently-played-readme.vercel.app/api?user=85o05xl09h5de8ngv9im0txhx&count=3)  
+
+      ![ETS Counter](https://ets-readme-counter.vercel.app/view?startdate=20250304&branch=army&lang=ko)  
+
+      👆 직접 만든 embed 전용 전역일 카운터에요. [코드는 여기에서 확인할 수 있어요!](https://github.com/k-atusa/ets-readme-counter)
 
 
   socialIcons:
