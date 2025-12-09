@@ -176,3 +176,8 @@ sitemap:
   changefreq: daily
   filename: sitemap.xml
   priority: 0.5
+
+module:
+  imports:
+    - path: github.com/KKKZOZ/hugo-admonitions
+    - path: PaperMod
