@@ -445,6 +445,20 @@ npx hugo-protector encrypt \
 ## Demo
 
 {{< protector payload="eyJ2IjoxLCJhbGciOiJBRVMtMjU2LUdDTSIsIml0ZXIiOjMxMDAwMCwic2FsdCI6IkdhUHJmSnZjSVNWeHZyWlNGQWhpanc9PSIsIml2IjoiVUZGNzEzNUs2cUNSWTNKaCIsImN0IjoiMU5hcDRxRTRwcy92WTNLVmRCNzZSQkR5MVNPaU1TcnkvdW84cTQyc0hXaklVT3NOT1AwMDRkbmdLZXpnIiwidGFnIjoiV25PMGZTU1FQbVAvcmhkRFl3V0FjQT09In0=" format="markdown" prompt="비밀번호" button="제출" hint="여기에 1234를 입력하세요." >}}
+<br>
+
+아래의 명령어로 구현했다.
+
+```sh
+npx hugo-protector encrypt 
+  --text "**굵은 텍스트** *기울임꼴 텍스트*"
+  --password 1234
+  --mode shortcode
+  --format helper
+  --prompt "비밀번호"
+  --button "제출"
+  --hint "여기에 1234를 입력하세요."
+```
 
 ## 마무리
 
