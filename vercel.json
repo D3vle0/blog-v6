@@ -5,5 +5,5 @@
       "GO_VERSION": "1.25.5"
     }
   },
-  "buildCommand": "yum install -y golang && hugo mod vendor && hugo --gc --minify"
+  "buildCommand": "yum update && yum install -y golang && hugo --gc --minify"
 }
