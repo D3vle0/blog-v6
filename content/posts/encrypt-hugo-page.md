@@ -388,24 +388,20 @@ CLI는 `npx hugo-protector encrypt [옵션]`으로 실행한다. `--text`/`--inp
 - `--shortcode-format <html|markdown>`: 원문이 HTML인지 마크다운인지 지정(기본 `html`).
 - `--prompt`, `--button`, `--hint`: 보호 폼의 레이블/버튼/힌트 문구를 즉시 정의한다.
 
-```bash
-# Markdown 스니펫과 폼 카피를 CLI에서 생성
-npx hugo-protector encrypt \
-  --text "**this is bold**" \
-  --password-file .pwd \
-  --mode shortcode \
-  --format helper \
-  --shortcode-format markdown \
-  --prompt "팀 비밀번호" \
-  --button "열기" \
-  --hint "Slack 공지 참고"
+```sh
+npx hugo-protector encrypt 
+  --text "**굵은 텍스트** *기울임꼴 텍스트*"
+  --password 1234
+  --mode shortcode
+  --format helper
+  --prompt "비밀번호"
+  --button "제출"
+  --hint "여기에 1234를 입력하세요."
 ```
 
 출력된 스니펫은 아래처럼 Markdown 렌더링 플래그와 폼 문구를 포함한다.
 
-```
-{{< protector payload="BASE64..." format="markdown" prompt="팀 비밀번호" button="열기" hint="Slack 공지 참고" >}}
-```
+{{< protector payload="eyJ2IjoxLCJhbGciOiJBRVMtMjU2LUdDTSIsIml0ZXIiOjMxMDAwMCwic2FsdCI6IkdhUHJmSnZjSVNWeHZyWlNGQWhpanc9PSIsIml2IjoiVUZGNzEzNUs2cUNSWTNKaCIsImN0IjoiMU5hcDRxRTRwcy92WTNLVmRCNzZSQkR5MVNPaU1TcnkvdW84cTQyc0hXaklVT3NOT1AwMDRkbmdLZXpnIiwidGFnIjoiV25PMGZTU1FQbVAvcmhkRFl3V0FjQT09In0=" format="markdown" prompt="비밀번호" button="제출" hint="여기에 1234를 입력하세요." >}}
 
 전체 페이지 보호에는 `--mode page`를 사용하여 front matter snippet을 만들고 대상 레이아웃에서 `protectors/full_page.html` partial을 호출하면 된다.
 
@@ -424,24 +420,6 @@ npx hugo-protector encrypt \
 > 
 > 블로그 markdown 코드까지 암호화하는 것이 아니라, Hugo가 생성한 최종 HTML을 암호화 대상으로 삼아야 한다는 점에 유의한다.
 ---
-
-## Demo
-
-{{< protector payload="eyJ2IjoxLCJhbGciOiJBRVMtMjU2LUdDTSIsIml0ZXIiOjMxMDAwMCwic2FsdCI6IkdhUHJmSnZjSVNWeHZyWlNGQWhpanc9PSIsIml2IjoiVUZGNzEzNUs2cUNSWTNKaCIsImN0IjoiMU5hcDRxRTRwcy92WTNLVmRCNzZSQkR5MVNPaU1TcnkvdW84cTQyc0hXaklVT3NOT1AwMDRkbmdLZXpnIiwidGFnIjoiV25PMGZTU1FQbVAvcmhkRFl3V0FjQT09In0=" format="markdown" prompt="비밀번호" button="제출" hint="여기에 1234를 입력하세요." >}}
-<br>
-
-아래의 명령어로 구현했다.
-
-```sh
-npx hugo-protector encrypt 
-  --text "**굵은 텍스트** *기울임꼴 텍스트*"
-  --password 1234
-  --mode shortcode
-  --format helper
-  --prompt "비밀번호"
-  --button "제출"
-  --hint "여기에 1234를 입력하세요."
-```
 
 ## 마무리
 
