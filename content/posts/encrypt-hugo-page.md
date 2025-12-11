@@ -140,15 +140,6 @@ const readPassword = args => {
 #### `renderHelper(mode, payload)` - 출력 포맷팅
 mode에 따라 Hugo에서 바로 사용할 수 있는 스니펫을 생성한다.
 
-```javascript
-const renderHelper = (mode, payload) => {
-  if (mode === 'page') {
-    return `# front matter snippet\nprotector_full_page_payload: "${payload}"`;
-  }
-  return `{{< protector payload="${payload}" >}}`;
-};
-```
-
 <!-- #### 사용 예시
 
 ```bash
@@ -181,21 +172,13 @@ npx hugo-protector encrypt \
 - `prompt` (선택): 비밀번호 입력 폼 레이블
 - `button` (선택): 제출 버튼 텍스트
 - `hint` (선택): 입력 폼 하단에 노출되는 힌트 문구
-- `format` (선택): `html` 또는 `markdown`. 기본값은 `html`이며, `markdown`으로 지정하면 복호화된 원문을 런타임이 즉시 HTML로 변환한다
+- `format` (선택): `html` 또는 `markdown`. 기본값은 `html`이며, `markdown`으로 지정하면 복호화된 원문을 런타임이 즉시 HTML로 변환한다.
 
 CLI에서 `--shortcode-format markdown`을 지정하면 helper 출력에 `format="markdown"` 속성이 자동으로 포함되므로, 스니펫을 별도로 수정할 필요가 없다. 동일하게 `--prompt`, `--button`, `--hint` 플래그를 사용하면 비밀번호 폼 카피 문구를 CLI 수준에서 바로 세팅할 수 있다.
 
-마크다운 변환은 헤딩, 목록, 인라인 강조(**bold**, *italic*), 코드 블록, 인라인 링크 정도를 다룬다. 예시는 아래와 같다.
+마크다운 변환은 헤딩, 목록, 인라인 강조(**bold**, *italic*), 코드 블록, 인라인 링크 정도를 다룬다.  
 
-```
-{{< protector
-     payload="BASE64_MD"
-     prompt="팀 비밀번호"
-     format="markdown"
->}}
-```
-
-해당 블록이 복호화되면 `## 제목`은 `<h2>제목</h2>`로, `- 항목`은 `<ul><li>항목</li></ul>`로 렌더링된다. HTML을 직접 암호화하고 싶다면 `format`을 생략하거나 `html`로 두면 된다.
+shortcode가 복호화되면 `## 제목`은 `<h2>제목</h2>`로, `- 항목`은 `<ul><li>항목</li></ul>`로 렌더링된다. HTML을 직접 암호화하고 싶다면 `format`을 생략하거나 `html`로 두면 된다.
 
 
 ### 3. `bin/hugo-protector.js` - CLI 진입점
