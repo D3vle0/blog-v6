@@ -5,7 +5,7 @@ draft: false
 categories: ["Coding"]
 tags: ["hugo", "encryption"]
 cover:
-#   image: img/icecast/2.png
+  image: img/encrypt-hugo-page/1.jpg
   caption: ""
 ShowToc: true
 TocOpen: true
