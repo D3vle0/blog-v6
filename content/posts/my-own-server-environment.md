@@ -11,7 +11,7 @@ ShowToc: true
 TocOpen: true
 ---
 
-홈서버와 Oracle cloud 서버를 초기화 하고 다시 세팅할 때 내 환경에 맞춰 쉽게 세팅할 수 있도록 기록한다. 한 줄 씩 실행하면 된다.
+홈서버와 Oracle cloud 서버를 초기화 하고 다시 세팅할 때 내 환경에 맞춰 쉽게 세팅할 수 있도록 기록한다. 쉘 명령은 한 줄 씩 실행하면 되고, `docker-compose.yml` 파일은 서버 환경에 맞춰 알아서 작성하면 된다.
 
 ## 홈서버 (Debian 13)
 
@@ -19,6 +19,7 @@ TocOpen: true
 
 - lvm + luks2 설정하기
 - root 로그인 금지
+- 공유기에서 필수 포트만 열기
 
 ```bash
 # 사용자 관리자 권한 주기
@@ -38,7 +39,7 @@ sudo apt upgrade -y
 
 # 패키지 설치
 sudo apt install nala -y
-sudo nala install zsh git curl wget htop btop neofetch net-tools -y
+sudo nala install zsh git curl wget htop btop net-tools -y
 
 # Python 설치
 sudo nala install python3 python3-pip python3-venv build-essential -y
@@ -66,9 +67,9 @@ grep -q "plugins=.*autojump" ~/.zshrc || sed -i -E 's/^plugins=\(([^)]*)\)/plugi
 grep -q "alias ls='eza --icons --group-directories-first'" ~/.zshrc || echo -e "\n# eza aliases\nalias ls='eza --icons --group-directories-first'\nalias ll='eza -lah --icons --group-directories-first --no-user'\nalias lt='eza -T --icons'" >> ~/.zshrc; source ~/.zshrc
 
 # Docker 설치
-sudo nala remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
+sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
 sudo nala update
-sudo nala install ca-certificates
+sudo nala install ca-certificates -y
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -81,26 +82,13 @@ sudo usermod -aG docker $USER && newgrp docker
 ## 보안 설정
 
 ```bash
-# ssh port 변경
-sudo vi /etc/ssh/sshd_config
-# NEW_PORT에 원하는 포트 입력
+# NEW_PORT에 원하는 ssh 포트 입력
 NEW_PORT=2222; sudo sed -i "s/^#\?Port [0-9]*/Port $NEW_PORT/" /etc/ssh/sshd_config && sudo systemctl restart sshd
 
 # ssh key 설정
 ssh-keygen -b 4096 # 로컬에서 실행
 ssh-copy-id -p <port> -i <key> <username>@<host> # 로컬에서 실행
 sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config && sudo sed -i 's/^#\?ChallengeResponseAuthentication.*/ChallengeResponseAuthentication no/' /etc/ssh/sshd_config && sudo sed -i 's/^#\?UsePAM.*/UsePAM no/' /etc/ssh/sshd_config && sudo systemctl restart sshd
-
-# 방화벽 설정
-sudo nala install ufw -y
-sudo ufw allow <ssh port>/tcp
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw enable
-sudo grep -q "BEGIN UFW AND DOCKER" /etc/ufw/after.rules || echo -e "\n# BEGIN UFW AND DOCKER\n*filter\n:DOCKER-USER - [0:0]\n-A DOCKER-USER -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT\n-A DOCKER-USER -j RETURN\nCOMMIT\n# END UFW AND DOCKER" | sudo tee -a /etc/ufw/after.rules > /dev/null
-sudo sed -i 's/^DEFAULT_FORWARD_POLICY=.*/DEFAULT_FORWARD_POLICY="ACCEPT"/' /etc/default/ufw
-sudo ufw disable && sudo ufw enable
-sudo iptables -L DOCKER-USER -n # DOCKER-USER 체인이 보이면 정상 적용됨
 
 # ssh 방화벽 설정
 sudo nala install fail2ban -y
@@ -110,6 +98,31 @@ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 PORT=2222; sudo awk -v p="$PORT" 'BEGIN{in=0} /^\[sshd\]/{print "[sshd]\nenabled = true\nport = " p "\nfilter = sshd\nlogpath = /var/log/auth.log\nbackend = systemd\nmaxretry = 3\nfindtime = 10m\nbantime = 1h"; in=1; next} /^\[.*\]/{in=0} !in{print}' /etc/fail2ban/jail.local 2>/dev/null | sudo tee /etc/fail2ban/jail.local >/dev/null
 sudo systemctl restart fail2ban
 sudo fail2ban-client status sshd
+```
+
+## 서비스 배포
+
+### Nginx Proxy Manager
+```yml
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    environment:
+      TZ: "Asia/Seoul"
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+```
+
+### portainer
+```bash
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
 ```
 <!--
 서비스 배포, 방화벽 설정, ssh 로그인 설정 쓸 것
