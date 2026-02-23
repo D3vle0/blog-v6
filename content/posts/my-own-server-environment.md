@@ -103,17 +103,18 @@ sudo fail2ban-client status sshd
 ## 서비스 배포
 
 ### Nginx Proxy Manager
+
 ```yml
 services:
   app:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: "jc21/nginx-proxy-manager:latest"
     restart: unless-stopped
     environment:
       TZ: "Asia/Seoul"
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+      - "80:80"
+      - "81:81"
+      - "443:443"
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
@@ -126,15 +127,18 @@ networks:
 ```
 
 ### portainer
+
 ```bash
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
 ```
 
 ### nextcloud
+
 ```bash
 docker network create proxy
 ```
+
 ```yml
 services:
   db:
@@ -261,3 +265,5 @@ docker volume rm nextcloud_db
 docker volume rm nextcloud_nextcloud
 docker compose up -d
 ```
+
+{{< protector payload="eyJ2IjoxLCJhbGciOiJBRVMtMjU2LUdDTSIsIml0ZXIiOjMxMDAwMCwic2FsdCI6Ikg3S2tIL1ZUK2JqSXV6UVJ6ZXI3NXc9PSIsIml2IjoicGVFMVJWVFBkT09kR2QzSyIsImN0IjoiaGxBWmgyekx2SlVZOE1XR0kyb1VHWE44dWxsQzExY2lENmNnRG9HUFpOc0plZy9kdHliODBQWE55U3BGdHdHVS9CTkhLV3FlWGpJemJTMDlQNDdoREVSakRFdWZJTHBxSkxFOW1UcDhPQnludEtyWEtYTDNaTWN2TjJKRW1BcndUWnE4aEhGZERPR1F2NUcxOXdDSjhHMFE4eklNamUvSzRPSFV4WFpmWGw1WjhheUgxQmM2MEg1aTRJZnNEbTZMazlBOUJPMStSZVRHa3IvT1B5V3JGcU45and0YWxnRy9nbGRFMFNOQjNjQi8vc0VZZ2F1MU1SZjM4bFB0YWNMcGx1OGFTMzMvWlB6Wmt5YldPM0M3QjlrVkNUV2dWcnJZZTNyVDU2eHZtOVhlWkFzSEt2M2lGM3R6K3VKY3hPZVcybldianc9PSIsInRhZyI6InF5VVNtVWJmUG9MQ1Jjb3didzJVR0E9PSJ9" format="markdown" >}}
