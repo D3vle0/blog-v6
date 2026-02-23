@@ -30,7 +30,7 @@ exit
 sudo sed -i 's/^#\?HandleLidSwitch=.*/HandleLidSwitch=ignore/' /etc/systemd/logind.conf && sudo systemctl restart systemd-logind
 ```
 
-### 초기 패키지 설치
+### 패키지 설치
 
 ```bash
 # 업데이트
@@ -39,7 +39,7 @@ sudo apt upgrade -y
 
 # 패키지 설치
 sudo apt install nala -y
-sudo nala install zsh git curl wget htop btop net-tools -y
+sudo nala install zsh git curl wget htop btop net-tools nano vim -y
 
 # Python 설치
 sudo nala install python3 python3-pip python3-venv build-essential -y
@@ -267,3 +267,56 @@ docker compose up -d
 ```
 
 {{< protector payload="eyJ2IjoxLCJhbGciOiJBRVMtMjU2LUdDTSIsIml0ZXIiOjMxMDAwMCwic2FsdCI6Ikg3S2tIL1ZUK2JqSXV6UVJ6ZXI3NXc9PSIsIml2IjoicGVFMVJWVFBkT09kR2QzSyIsImN0IjoiaGxBWmgyekx2SlVZOE1XR0kyb1VHWE44dWxsQzExY2lENmNnRG9HUFpOc0plZy9kdHliODBQWE55U3BGdHdHVS9CTkhLV3FlWGpJemJTMDlQNDdoREVSakRFdWZJTHBxSkxFOW1UcDhPQnludEtyWEtYTDNaTWN2TjJKRW1BcndUWnE4aEhGZERPR1F2NUcxOXdDSjhHMFE4eklNamUvSzRPSFV4WFpmWGw1WjhheUgxQmM2MEg1aTRJZnNEbTZMazlBOUJPMStSZVRHa3IvT1B5V3JGcU45and0YWxnRy9nbGRFMFNOQjNjQi8vc0VZZ2F1MU1SZjM4bFB0YWNMcGx1OGFTMzMvWlB6Wmt5YldPM0M3QjlrVkNUV2dWcnJZZTNyVDU2eHZtOVhlWkFzSEt2M2lGM3R6K3VKY3hPZVcybldianc9PSIsInRhZyI6InF5VVNtVWJmUG9MQ1Jjb3didzJVR0E9PSJ9" format="markdown" >}}
+
+## Oracle Cloud 서버 (Rocky Linux 9)
+
+### 첫 설치 시
+
+- 서브넷 설정에서 필수 포트만 열기
+- Oracle Cloud 계정 2fa 활성화
+
+### 패키지 설치
+
+
+```sh
+sudo dnf update -y
+sudo dnf upgrade -y
+sudo dnf install neofetch htop btop zsh curl wget git nano vim -y
+
+# Python 3.14.3 설치
+sudo dnf groupinstall "Development Tools" -y
+sudo dnf install tar curl gcc openssl-devel bzip2-devel libffi-devel zlib-devel wget make findutils ncurses-devel xz-devel sqlite-devel readline-devel openssl-devel libuuid-devel -y
+cd ~
+wget https://www.python.org/ftp/python/3.14.3/Python-3.14.3.tar.xz
+tar -xf Python-3.14.3.tar.xz
+cd ~/Python-3.14.3
+./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+make -j $(nproc)
+sudo make altinstall
+python3.14 --version
+
+# Node.js 설치 (Debian 과정과 동일)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+source ~/.bashrc
+nvm install node
+node -v; npm -v
+
+# 터미널 설정
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
+echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+source ~/.zshrc # p10k 초기 설정
+sed -i 's/POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE=.*/POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE="%n"/' ~/.p10k.zsh && sed -i 's/POWERLEVEL9K_TIME_FORMAT=.*/POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"/' ~/.p10k.zsh && source ~/.p10k.zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 2>/dev/null || true; grep -q "zsh-autosuggestions" ~/.zshrc || echo -e "\n# zsh-autosuggestions\nsource ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc; source ~/.zshrc
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 2>/dev/null || true; grep -q "zsh-syntax-highlighting" ~/.zshrc || echo -e "\n# zsh-syntax-highlighting\nsource ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc; source ~/.zshrc
+wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz
+sudo chmod +x eza
+sudo chown root:root eza
+sudo mv eza /usr/local/bin/eza
+sudo dnf install epel-release zoxide -y
+sudo dnf install -y zoxide && grep -qxF 'eval "$(zoxide init zsh)"' ~/.zshrc || echo 'eval "$(zoxide init zsh)"' >> ~/.zshrc && source ~/.zshrc
+grep -q "alias ls='eza --icons --group-directories-first'" ~/.zshrc || echo -e "\n# eza aliases\nalias ls='eza --icons --group-directories-first'\nalias ll='eza -lah --icons --group-directories-first --no-user'\nalias lt='eza -T --icons'" >> ~/.zshrc; source ~/.zshrc
+```
