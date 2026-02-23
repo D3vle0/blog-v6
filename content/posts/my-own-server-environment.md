@@ -117,6 +117,12 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
 ```
 
 ### portainer
@@ -124,9 +130,134 @@ services:
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
 ```
-<!--
-서비스 배포, 방화벽 설정, ssh 로그인 설정 쓸 것
-오라클 rocky linux 9도 똑같이
 
-특히 서비스 배포 관련 코드는 hugo-protector로 암호화
--->
+### nextcloud
+```bash
+docker network create proxy
+```
+```yml
+services:
+  db:
+    image: mariadb:10.11
+    container_name: nextcloud-db
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: <password>
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: <password>
+    networks:
+      - internal
+
+  redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    restart: unless-stopped
+    networks:
+      - internal
+
+  app:
+    image: nextcloud:27-apache
+    container_name: nextcloud-app
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - nextcloud:/var/www/html
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: <password>
+      REDIS_HOST: redis
+      PHP_MEMORY_LIMIT: 1G
+      PHP_UPLOAD_LIMIT: 20G
+    networks:
+      - internal
+      - proxy
+
+volumes:
+  db:
+  nextcloud:
+
+networks:
+  internal:
+    internal: true
+  proxy:
+    external: true
+```
+
+Nginx Proxy Manager에서 아래와 같이 nextcloud reverse proxy를 설정한다.
+
+- Scheme: http
+- Forward Hostname/IP: nextcloud-app
+- Forward Port: 80
+- Websocket Support: ON
+- Block Common Exploits: ON
+- Force SSL
+- HTTP/2
+- HSTS
+
+Custom Nginx Configuration
+
+```nginx
+client_max_body_size 20G;
+
+proxy_connect_timeout 3600;
+proxy_send_timeout 3600;
+proxy_read_timeout 3600;
+send_timeout 3600;
+```
+
+웹에 접속하여 admin 세팅한다.
+
+```bash
+docker exec -it nextcloud-app bash
+apt update; apt install vim
+vi /var/www/html/config/config.php
+```
+
+nextcloud 컨테이너에 접속하여 아래의 내용이 포함되도록 `config/config.php` 를 수정한다.
+
+```php
+'trusted_domains' =>
+  array (
+    0 => '<domain>',
+  ),
+
+'trusted_proxies' =>
+  array (
+    0 => 'nginx-proxy-manager',
+  ),
+
+'overwritehost' => '<domain>',
+'overwriteprotocol' => 'https',
+'overwrite.cli.url' => 'https://<domain>',
+
+'forwarded_for_headers' =>
+  array (
+    0 => 'HTTP_X_FORWARDED_FOR',
+  ),
+
+'filelocking.enabled' => true,
+'memcache.local' => '\\OC\\Memcache\\Redis',
+'memcache.locking' => '\\OC\\Memcache\\Redis',
+'redis' =>
+  array (
+    'host' => 'redis',
+    'port' => 6379,
+  ),
+```
+
+⚠️ 만약 php 에러나 `.htaccess` 관련 에러가 떴다면 db 삭제 후 재배포한다.
+
+```bash
+docker compose down
+docker volume rm nextcloud_db
+docker volume rm nextcloud_nextcloud
+docker compose up -d
+```
